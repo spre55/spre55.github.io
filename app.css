@@ -1,0 +1,22 @@
+html {
+    background: greenyellow;
+}
+
+section {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.profile__title {
+    width: 200px;
+    margin: auto;
+    font-size: x-large;
+    background: darkolivegreen;
+    color: palegreen;
+    font-weight: bold;
+}
+
+.profile__value {
+    margin: 10px 0;
+}
