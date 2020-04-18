@@ -1,0 +1,13 @@
+{
+    "name": "シュプレ",
+    "sex": "man",
+    "favolite": {
+        "drink": [
+            "coffee",
+            "water"
+        ],
+        "food": [
+            "cheesecake"
+        ]
+    }
+}
