@@ -42,12 +42,16 @@ section {
     margin: auto;
 }
 
+.siteNone {
+    display: none;
+}
+
 #icon {
     margin: 20px;
 }
 
 .profile__title {
-    width: 320px;
+    /* width: 320px; */
     margin: auto;
     font-size: x-large;
     background: darkolivegreen;
@@ -55,8 +59,44 @@ section {
     font-weight: bold;
 }
 
+@media screen and (min-width: 480px) {
+    .profile__title {
+        width: 320px;
+    }
+}
+
 .profile__value {
     margin: 10px 0;
+}
+
+#greenBall {
+    position: absolute;
+    animation: translateY 2s linear infinite;
+}
+
+@keyframes translateY{
+    0%{
+    }
+    100%{
+        transform: translateY(500px);
+    }
+}
+
+#greenBall__face {
+    animation: rotate 2s linear infinite;
+    width: 50px;
+    height: 50px;
+    background-size: 50px;
+    background-image: url('https://spre55.github.io/spre55_100.png');
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotateZ(-0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
 }
 
 #twitter-widget-1 {
