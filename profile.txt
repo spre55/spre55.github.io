@@ -2,8 +2,8 @@
 性別 男
 趣味 読書
 経歴 2016年ソーシャルゲーム開発・運用(PHP)<br>2018年Web開発(Go/GCP等)
-資格 認定スクラムマスター<br>JSTQB(Foundation)<br>AssociateCloudEngineer(GCP)
-最近の興味 OAuth<br>DDD<br>Angular<br>Flutter
+資格 認定スクラムマスター<br>JSTQB(Foundation)<br>AssociateCloudEngineer(GCP)<br>ProfessionalCloudEngineer(GCP)
+最近の興味 Flutter<br>Ruby<br>Swift
 すきな食べ物 おいしいもの
 すきな飲み物 水とコーヒー
-すきな本 ドメイン駆動設計入門
+すきな本 嫌われる勇気<br>クリーンアーキテクチャ
