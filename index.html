@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="app.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="app.css?ver=2">
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <title>前略シュプレ</title>
 </head>
@@ -43,46 +43,52 @@
 </body>
 
 <script>
+    const getRandomInt = (min, max) => {
+        return Math.floor(Math.random() * Math.floor((max + 1 - min))) + min;
+    }
+
     $(() => {
         // プロフィール取得&表示
         $.ajax({
-            url: 'https://spre55.github.io/profile.json',
-            // url: 'http://127.0.0.1:3000/profile.json',
+            // url: 'https://spre55.github.io/profile.json',
+            url: 'http://127.0.0.1:3000/profile.json',
             beforeSend: () => {
                 $('.loading').removeClass('hide');
             },
         }).then(
             profile => {
                 $('.loading').addClass('hide');
-                for (let k in profile) {
-                    $("#profile").append(`<div class="profile__title">${k}<div>`);
-                    if (Array.isArray(profile[k])) {
-                        for (let l in profile[k]) {
-                            $("#profile").append(`<div class="profile__value min">${profile[k][l]}<div>`);                            
-                        };
+                Object.keys(profile).forEach(key => {
+                    let items = ""
+                    let addMin = ""
+                    if (Array.isArray(profile[key])) {
+                        Object.values(profile[key]).forEach(val => {
+                            items += val + "<br>"
+                        });
+                        addMin = "min"
                     } else {
-                        $("#profile").append(`<div class="profile__value">${profile[k]}<div>`);
+                        items = profile[key];
                     }
-                };
+                    
+                    $("#profile").append(`<h3 class="profile__title">${key}</h3>`);
+                    $("#profile").append(`<p class="profile__value ${addMin}">${items}</p>`); 
+                })
             },
             error => {
                 $('.loading').addClass('hide');
-                $("#profile").append(`<div class="profile__error">エラー...<div>`);
+                $("#profile").append(`<div class="profile__error">エラー...</div>`);
             }
         );
 
-        // たまに降ってくる緑の球体
+        // 緑の球体を定期的に出現させる
         setInterval(() => {
             $("#greenBall").remove();
-            $("body").append('<div id="greenBall" style="top:' + getRandomInt(document.documentElement.scrollHeight - 500) +
-                'px;left: ' + getRandomInt(window.innerWidth) + 'px;"><div>')
-            $("#greenBall").append('<div id="greenBall__face"><div>')
+            // 出現位置
+            const h = getRandomInt(window.scrollY, window.scrollY+500); // 高さ。
+            const w = getRandomInt(0, window.innerWidth-50); // 横。-50しないと画像幅分右にはみ出てヘッダーがずれる
+            $("body").append(`<div id="greenBall" style="top:${h}px; left:${w}px;"></div>`);
+            $("#greenBall").append('<div id="greenBall__face"></div>');
         }, 1000);
     });
-
-    const getRandomInt = max => {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-
 </script>
 </html>
